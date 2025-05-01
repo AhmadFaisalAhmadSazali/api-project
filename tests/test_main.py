@@ -1,4 +1,5 @@
 import pytest
+from fastapi import HTTPException
 from fastapi.testclient import TestClient
 
 from main import app
@@ -37,6 +38,13 @@ def test_read_players_with_id(client):
     assert response.json().get("player_id") == 1001
 
 
+# test /v0/players/{player_id}/ error
+def test_read_players_with_id_error(client):
+    response = client.get("/v0/players/9999999/")
+    assert response.status_code == 404
+    assert response.json() == {"detail": "Player not found"}
+
+
 # test /v0/performances/
 def test_read_performances(client):
     response = client.get("/v0/performances/?skip=0&limit=20000")
@@ -58,6 +66,13 @@ def test_read_leagues_with_id(client):
     response = client.get("/v0/leagues/5002/")
     assert response.status_code == 200
     assert len(response.json()["teams"]) == 8
+
+
+# test /v0/leagues/{league_id}/ error
+def test_read_players_with_id_error(client):
+    response = client.get("/v0/leagues/99999999/")
+    assert response.status_code == 404
+    assert response.json() == {"detail": "League not found"}
 
 
 # test /v0/leagues/
