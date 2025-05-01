@@ -11,7 +11,7 @@ from src.database import SessionLocal
 test_date = date(2024, 4, 1)
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture
 def db_session():
     """This starts a database session and closes it when done"""
     session = SessionLocal()
