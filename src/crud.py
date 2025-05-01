@@ -4,7 +4,7 @@ from datetime import date
 
 from sqlalchemy.orm import Session, joinedload
 
-import models
+from . import models
 
 
 def get_player(db: Session, player_id: int):

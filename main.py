@@ -5,9 +5,8 @@ from datetime import date
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
 
-import crud
-import schemas
-from database import SessionLocal
+from src import crud, schemas
+from src.database import SessionLocal
 
 app = FastAPI()
 

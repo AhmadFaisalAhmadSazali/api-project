@@ -4,8 +4,8 @@ from datetime import date
 
 import pytest
 
-import crud
-from database import SessionLocal
+from src import crud
+from src.database import SessionLocal
 
 # use a test date of 4/1/2024 to test the min_last_changed_date.
 test_date = date(2024, 4, 1)
