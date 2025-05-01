@@ -1,5 +1,4 @@
 import pytest
-from fastapi import HTTPException
 from fastapi.testclient import TestClient
 
 from main import app
@@ -69,7 +68,7 @@ def test_read_leagues_with_id(client):
 
 
 # test /v0/leagues/{league_id}/ error
-def test_read_players_with_id_error(client):
+def test_read_leagues_with_id_error(client):
     response = client.get("/v0/leagues/99999999/")
     assert response.status_code == 404
     assert response.json() == {"detail": "League not found"}
